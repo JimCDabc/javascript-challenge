@@ -26,19 +26,6 @@ function buildHTMLTable(reports) {
 // build initial table from the data
 buildHTMLTable(tableData);
 
-// // filter by date function
-// function filterByDate(report, inputDate) {
-//   var parseDate = d3.timeParse("%m/%d/%Y");
-//   var rdate = parseDate(report.datetime);
-//   var idate = parseDate("1/13/2010")
-//   console.log(`report date time ${report.datetime}`);
-
-//   console.log(` input date: ${idate}`);
-//   console.log(`report date: ${rdate}`);
-//   console.log(rdate.getTime() !== idate.getTime());
-//   return(rdate.getTime() === idate.getTime());
-// }
-
 // Select the button
 var button = d3.select("#filter-btn");
 
