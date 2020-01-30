@@ -26,38 +26,52 @@ function buildHTMLTable(reports) {
 // build initial table from the data
 buildHTMLTable(tableData);
 
+// Filter by Date function
+function filterbyDate(dataset, inDateStr) {
+  // initialize filterdData array
+  var filteredData = [];
+
+  // parse the date and check to see if valid date
+  var parseDate = d3.timeParse("%m/%d/%Y");
+  var inputDate = parseDate(inDateStr);
+ 
+  if (inputDate !== null) {
+    console.log(`${inDateStr} parsed to datetime: ${inputDate}`);
+
+    // filter table by date-time that is taken from inputvalue.
+    // var filteredData = tableData.filter(report => (parseDate(report.datetime) == inputDate));
+    filteredData = 
+      dataset.filter(report => (parseDate(report.datetime).getTime() === inputDate.getTime()));
+
+    // console.log(filteredData);
+    
+  } else {
+    console.log(`INPUT ERROR: Invalid date entered: ${inDateStr}`)
+  }
+
+  return filteredData
+}
+
 // Select the button
 var button = d3.select("#filter-btn");
 
 button.on("click", function() {
 
-  // initialize filterdData array
-  //var filteredData = [];
+  // initialize filterdData array to be all the data
+  var filteredData = tableData;
 
   // Select the input element and get the raw HTML node
   var inputElement = d3.select("#datetime");
 
   // Get the value property of the input element
   var inputDateStr = inputElement.property("value");
-
-  // parse the date and check to see if valid date
-  var parseDate = d3.timeParse("%m/%d/%Y");
-  var inputDate = parseDate(inputDateStr);
  
-  if (inputDate !== null) {
-    console.log(`${inputDateStr} parsed to datetime: ${inputDate}`);
-
-    // filter table by date-time that is taken from inputvalue.
-    // var filteredData = tableData.filter(report => (parseDate(report.datetime) == inputDate));
-    var filteredData = 
-      tableData.filter(report => (parseDate(report.datetime).getTime() === inputDate.getTime()));
-
-    console.log(filteredData);
-    buildHTMLTable(filteredData);
-    
-  } else {
-    console.log(`INPUT ERROR: Invalid date entered: ${inputDateStr}`)
-    buildHTMLTable([]);
+  // if there is a date value to filter, then filter by date
+  if (inputDateStr != "") {
+    filteredData = filterbyDate(filteredData, inputDateStr);
   }
 
+  // build the HTML Table
+  buildHTMLTable(filteredData);
+  
 });
