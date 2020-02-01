@@ -9,7 +9,7 @@ https://wustl.bootcampcontent.com/wustl-bootcamp/WUSTL-STL-DATA-PT-10-2019-U-C/b
 | File Path | Description |
 |--------|--------|
 | ~/UFO-level-1/index.html | HTML page for UFO-level-1 assignment. This was part of Starter Code for assignment.  No changes|
-| ~/UFO-level-1/static/js/app.js | Javascript app to load data, and handle date filter in index.html for UFO-level 1 |
+| ~/UFO-level-1/static/js/app.js | Javascript app to load data, and handle date filter in index.html for UFO-level 1.  Date filter parses string date into a datetime object and compares datetimes instead of strings. |
 |~/UFO-level-2/index.html | HTML page for UFO-level-2.  Based on Starter Code.  Added additional input fields to filter across multiple attributes |
 | ~/UFO-level-2/static/js/app.js | Javascript app to load data, and handle all data filters in index.html for UFO-level-2 |
 
